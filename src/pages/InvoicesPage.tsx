@@ -120,27 +120,31 @@ export function InvoicesPage() {
               <tr className="text-left text-xs sm:text-sm text-gray-500">
                 <th className="px-3 sm:px-4 py-3 font-medium">Número</th>
                 <th className="px-3 sm:px-4 py-3 font-medium hidden sm:table-cell">Cliente</th>
+                <th className="px-3 sm:px-4 py-3 font-medium hidden md:table-cell">Comunidad</th>
                 <th className="px-3 sm:px-4 py-3 font-medium">Total</th>
-                <th className="px-3 sm:px-4 py-3 font-medium hidden md:table-cell">Fecha</th>
+                <th className="px-3 sm:px-4 py-3 font-medium hidden lg:table-cell">Fecha</th>
                 <th className="px-3 sm:px-4 py-3 font-medium">Acciones</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="px-4 py-8 text-center text-gray-500">Cargando...</td>
+                  <td colSpan={6} className="px-4 py-8 text-center text-gray-500">Cargando...</td>
                 </tr>
               ) : invoices.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-4 py-8 text-center text-gray-500">No hay facturas</td>
+                  <td colSpan={6} className="px-4 py-8 text-center text-gray-500">No hay facturas</td>
                 </tr>
               ) : (
                 invoices.map((invoice) => (
                   <tr key={invoice.id} className="hover:bg-gray-50">
                     <td className="px-3 sm:px-4 py-3 text-sm font-semibold text-blue-600">{invoice.number}</td>
                     <td className="px-3 sm:px-4 py-3 text-sm text-gray-700 hidden sm:table-cell">{invoice.client?.name || 'N/A'}</td>
-                    <td className="px-3 sm:px-4 py-3 text-sm font-semibold text-gray-800">€{Number(invoice.total).toFixed(2)}</td>
                     <td className="px-3 sm:px-4 py-3 text-sm text-gray-500 hidden md:table-cell">
+                      {invoice.community?.name || '-'}
+                    </td>
+                    <td className="px-3 sm:px-4 py-3 text-sm font-semibold text-gray-800">€{Number(invoice.total).toFixed(2)}</td>
+                    <td className="px-3 sm:px-4 py-3 text-sm text-gray-500 hidden lg:table-cell">
                       {new Date(invoice.createdAt).toLocaleDateString('es-ES')}
                     </td>
                     <td className="px-3 sm:px-4 py-3">

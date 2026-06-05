@@ -15,6 +15,15 @@ export interface Client {
   updatedAt: string;
 }
 
+export interface Community {
+  id: string;
+  name: string;
+  address: string;
+  clientId: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface Service {
   id: string;
   name: string;
@@ -43,6 +52,8 @@ export interface Invoice {
   number: string;
   clientId: string;
   client: Client;
+  communityId?: string;
+  community?: Community;
   data: InvoiceData;
   subtotal: number;
   tax: number;

@@ -9,6 +9,7 @@ import { ClientFormPage } from './pages/ClientFormPage';
 import { ClientEditPage } from './pages/ClientEditPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { InvoicesPage } from './pages/InvoicesPage';
+import { CommunitiesPage } from './pages/CommunitiesPage';
 import { SettingsPage } from './pages/SettingsPage';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -27,6 +28,7 @@ function AppRoutes() {
       <Route path="/clients/new" element={<ProtectedRoute><ClientFormPage /></ProtectedRoute>} />
       <Route path="/clients/:id/edit" element={<ProtectedRoute><ClientEditPage /></ProtectedRoute>} />
       <Route path="/services" element={<ProtectedRoute><ServicesPage /></ProtectedRoute>} />
+      <Route path="/communities" element={<ProtectedRoute><CommunitiesPage /></ProtectedRoute>} />
       <Route path="/invoices" element={<ProtectedRoute><InvoicesPage /></ProtectedRoute>} />
       <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
       <Route path="/" element={<Navigate to="/dashboard" />} />
